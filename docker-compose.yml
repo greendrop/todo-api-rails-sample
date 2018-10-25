@@ -1,0 +1,51 @@
+version: '3'
+
+services:
+  mysql:
+    image: mysql:5.7.22
+    environment:
+      - LANG=C.UTF-8
+      - MYSQL_ROOT_PASSWORD=mysql
+    volumes:
+      - mysql_volume:/var/lib/mysql
+    ports:
+      - '3306:3306'
+  web: &app_base
+    build: ./docker/web
+    command: bundle exec rails s -b -0.0.0.0
+    ports:
+      - '3000:3000'
+    environment:
+      - PATH=/app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - USER_ID=${USER_ID}
+      - GROUP_ID=${GROUP_ID}
+      - MYSQL_ROOT_PASSWORD=mysql
+    volumes:
+      - .:/app
+      - bundle_volume:/usr/local/bundle
+      - home_volume:/home/docker
+    working_dir: /app
+    depends_on:
+      - mysql
+    hostname: web
+    privileged: true
+    entrypoint: ./docker/web/docker-entrypoint.sh
+  spring:
+    <<: *app_base
+    command: spring server
+    ports: []
+    environment:
+      - PATH=/app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/bin:/bin
+      - USER_ID=${USER_ID}
+      - GROUP_ID=${GROUP_ID}
+      - MYSQL_ROOT_PASSWORD=mysql
+      - SPRING_SOCKET=/home/docker/.spring/spring.sock
+    hostname: spring
+
+volumes:
+  mysql_volume:
+    driver: local
+  bundle_volume:
+    driver: local
+  home_volume:
+    driver: local

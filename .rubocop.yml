@@ -1,0 +1,38 @@
+Bundler/OrderedGems:
+  Enabled: false
+
+Lint/AmbiguousBlockAssociation:
+  Enabled: false
+
+Metrics/AbcSize:
+  Max: 50
+  Exclude:
+    - db/migrate/*
+
+Metrics/BlockLength:
+  Exclude:
+    - config/environments/development.rb
+    - config/routes.rb
+    - db/migrate/*
+    - db/schema.rb
+    - spec/**/*.rb
+
+Metrics/LineLength:
+  Max: 120
+  Exclude:
+    - config/initializers/devise.rb
+
+Metrics/MethodLength:
+  Max: 20
+  Exclude:
+    - db/migrate/*
+
+Style/AsciiComments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/MixinUsage:
+  Exclude:
+    - bin/**/*

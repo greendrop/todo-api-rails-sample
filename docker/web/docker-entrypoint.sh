@@ -32,6 +32,10 @@ echo "docker ALL=NOPASSWD: ALL" > /etc/sudoers.d/docker
 
 # Directories settings
 chown $USER:$GROUP /home/docker
+if [ ! -e /home/docker/.spring ]; then
+  mkdir /home/docker/.spring
+  chown $USER:$GROUP /home/docker/.spring
+fi
 
 # Environments settings
 if [ -n "$ADDITIONAL_PATH" ]; then

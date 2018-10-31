@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
@@ -33,18 +35,67 @@ gem 'bootsnap', '>= 1.1.0', require: false
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'brakeman', '~> 4.3.1', require: false
+  gem 'byebug', platforms: %i[mri mingw x64_mingw]
+  gem 'factory_bot_rails', '~> 4.11.1'
+  gem 'haml_lint', '~> 0.28.0', require: false
+  gem 'json_expressions', '~> 0.9.0', require: false
+  gem 'rails-controller-testing', '~> 1.0.2', require: false
+  gem 'rspec-its', '~> 1.2.0', require: false
+  gem 'rspec-rails', '~> 3.8.1'
+  gem 'rubocop', '~> 0.59.2', require: false
+  gem 'scss_lint', '~> 0.57.1', require: false
+  gem 'shoulda-callback-matchers', '~> 1.1.4', require: false
+  gem 'shoulda-matchers', '~> 3.1.1', require: false
+  gem 'simplecov', '~> 0.12.0', require: false
+  gem 'simplecov-console', '~> 0.4.2', require: false
 end
 
 group :development do
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
-  gem 'web-console', '>= 3.3.0'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'web-console', '>= 3.3.0'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'awesome_print', '~> 1.8'
+  gem 'better_errors', '~> 2.5'
+  gem 'binding_of_caller', '~> 0.8.0'
+  gem 'bullet', '~> 5.7.6'
+  gem 'letter_opener_web', '~> 1.3.1'
+  gem 'pry-byebug', '~> 3.6.0'
+  gem 'pry-coolline', '~> 0.2.5'
+  gem 'pry-doc', '~> 0.13.4'
+  gem 'pry-rails', '~> 0.3.6'
+  gem 'pry-stack_explorer', '~> 0.4.9.2'
   gem 'spring'
+  gem 'spring-commands-rspec', '~> 1.0.4'
   gem 'spring-watcher-listen', '~> 2.0.0'
 end
 
-
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
-gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
+gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
+
+# Configuration
+gem 'dotenv-rails', '~> 2.5.0'
+gem 'settingslogic', '~> 2.0.9'
+
+# Locale
+gem 'devise-i18n', '~> 1.6.5'
+gem 'rails-i18n', '~> 5.1.1'
+gem 'doorkeeper-i18n', '~> 3.0'
+
+# Authentication
+gem 'devise', '~> 4.5.0'
+
+# ActiveRecord
+gem 'enumerize', '~> 2.2.2'
+gem 'kaminari', '~> 1.1.1'
+gem 'ransack', '~> 2.0.1'
+
+# ActionView
+gem 'hamlit', '~> 2.9.0'
+
+# CORS
+gem 'rack-cors', '~> 0.4.0', require: 'rack/cors'
+
+# OAuth2 provider
+gem 'doorkeeper', '~> 5.0.2'

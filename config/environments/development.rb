@@ -58,5 +58,9 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
+  # Action Mailer
+  config.action_mailer.delivery_method = :letter_opener_web
+
+  # BetterErrors
   BetterErrors::Middleware.allow_ip! '0.0.0.0/0'
 end

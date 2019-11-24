@@ -11,7 +11,7 @@ require 'active_record/railtie'
 require 'action_controller/railtie'
 require 'action_mailer/railtie'
 require 'action_view/railtie'
-# require "action_cable/engine"
+require 'action_cable/engine'
 require 'sprockets/railtie'
 # require "rails/test_unit/railtie"
 
@@ -19,7 +19,7 @@ require 'sprockets/railtie'
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
-module TodoApiRailsSample
+module TodoPwaSample
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.2
@@ -31,5 +31,9 @@ module TodoApiRailsSample
 
     # Don't generate system test files.
     config.generators.system_tests = nil
+
+    config.time_zone = 'Tokyo'
+    config.active_record.default_timezone = :local
+    config.action_view.field_error_proc = proc { |html_tag, _instance| html_tag }
   end
 end

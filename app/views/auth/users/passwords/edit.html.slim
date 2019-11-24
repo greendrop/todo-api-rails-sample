@@ -1,0 +1,35 @@
+= content_for :content_header do
+  .row
+    .col-sm-12
+      h1
+        = t('.title')
+
+.row
+  .col-sm-12
+    = form_with(model: resource, as: resource_name, url: password_path(resource_name), local: true,
+      html: { method: :patch }, builder: BootstrapFormBuilder) do |f|
+
+      = render 'auth/shared/form_errors_base', resource: f.object
+
+      = f.hidden_field :reset_password_token
+
+      .form-group.row
+        = f.label User.human_attribute_name(:password), class: 'col-sm-4 col-form-label required'
+        .col-sm-8
+          = f.password_field :password
+
+      .form-group.row
+        = f.label User.human_attribute_name(:password_confirmation), class: 'col-sm-4 col-form-label required'
+        .col-sm-8
+          = f.password_field :password_confirmation
+
+      .row
+        .col-sm-12
+          button.btn.btn-primary.btn-block type='submit'
+            i.fas.fa-pen.mr-1
+            = t('.submit')
+
+.row
+  .col-sm-12
+    p.my-1
+      = link_to t('auth.labels.sign_in'), new_session_path(resource_name)

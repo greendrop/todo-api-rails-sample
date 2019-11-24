@@ -1,0 +1,10 @@
+.form {
+  &-group {
+    .required::after {
+      color: #dd4b39;
+      content: '*';
+      margin-left: 5px;
+    }
+  }
+}
+  

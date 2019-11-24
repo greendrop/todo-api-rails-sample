@@ -1,0 +1,10 @@
+ja:
+  auth:
+    users:
+      passwords:
+        new:
+          title: パスワードを忘れた場合はこちら
+          send: パスワードの再設定方法を送信する
+        edit:
+          title: パスワード変更
+          submit: 変更

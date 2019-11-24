@@ -23,7 +23,21 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 
+# dotenv
+.env
+
+# coverage
+/coverage
+
+# webpacker
+/public/packs
+/public/packs-test
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
 # direnv
 .envrc
-
-config/database.yml

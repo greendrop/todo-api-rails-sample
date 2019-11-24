@@ -10,9 +10,16 @@ services:
       - mysql_volume:/var/lib/mysql
     ports:
       - '3306:3306'
+  redis:
+    image: redis:4.0.9-alpine
+    ports:
+      - '6379:6379'
+    volumes:
+      - redis_volume:/data
+    hostname: redis
   web: &app_base
     build: ./docker/web
-    command: bundle exec rails s -b 0.0.0.0
+    command: /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -b 0.0.0.0"
     ports:
       - '3000:3000'
     environment:
@@ -20,16 +27,20 @@ services:
       - USER_ID=${USER_ID}
       - GROUP_ID=${GROUP_ID}
       - MYSQL_ROOT_PASSWORD=mysql
+      - "WEBPACKER_DEV_SERVER_HOST=0.0.0.0"
     volumes:
-      - .:/app
+      - .:/app:cached
       - bundle_volume:/usr/local/bundle
       - home_volume:/home/docker
     working_dir: /app
     depends_on:
       - mysql
+      - redis
     hostname: web
     privileged: true
     entrypoint: ./docker/web/docker-entrypoint.sh
+    tty: true
+    stdin_open: true
   spring:
     <<: *app_base
     command: spring server
@@ -41,9 +52,28 @@ services:
       - MYSQL_ROOT_PASSWORD=mysql
       - SPRING_SOCKET=/home/docker/.spring/spring.sock
     hostname: spring
+    tty: false
+    stdin_open: false
+  webpack:
+    <<: *app_base
+    command: webpack-dev-server
+    ports:
+      - '3035:3035'
+    ports: []
+    environment:
+      - PATH=/app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      - USER_ID=${USER_ID}
+      - GROUP_ID=${GROUP_ID}
+      - MYSQL_ROOT_PASSWORD=mysql
+      - "WEBPACKER_DEV_SERVER_HOST=0.0.0.0"
+    hostname: webpack
+    tty: false
+    stdin_open: false
 
 volumes:
   mysql_volume:
+    driver: local
+  redis_volume:
     driver: local
   bundle_volume:
     driver: local

@@ -2,8 +2,8 @@
 
 module Api
   module V1
-    class TasksController < Api::BaseController
-      before_action :find_task, only: %i[show edit update destroy]
+    class TasksController < Api::UserBaseController
+      before_action :find_task, only: %i[show update destroy]
 
       def index
         page = params[Kaminari.config.page_method_name] || 1
@@ -23,29 +23,30 @@ module Api
       end
 
       def show
-        render json: @task.as_json
+        render json: @task, serializer: TaskSerializer
       end
 
       def create
         @task = Task.new(task_params.merge(user_id: current_resource_owner.id))
         if @task.save
-          render json: @task.as_json, status: 201
+          render json: @task, serializer: Api::TaskSerializer, status: :created
         else
-          render json: @task.as_json.merge(errors: validate_errors(@task)), status: 400
+          serializer = Api::TaskSerializer.new(@task, with_errors: true)
+          render json: serializer.serializable_hash, status: :bad_request
         end
       end
 
       def update
         if @task.update(task_params)
-          render json: @task.as_json
+          head 204
         else
-          render json: @task.as_json.merge(errors: validate_errors(@task)), status: 400
+          render json: @task.as_json.merge(errors: validate_errors(@task)), status: :bad_request
         end
       end
 
       def destroy
-        @task.destroy
-        render json: @task.as_json
+        @task.destroy!
+        head 204
       end
 
       private

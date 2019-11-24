@@ -1,0 +1,39 @@
+= content_for :content_header do
+  .row
+    .col-sm-12
+      h1
+        = t('.title')
+
+.row
+  .col-sm-12
+    = form_with(model: resource, scope: resource_name, url: session_path(resource_name), local: true,
+      builder: BootstrapFormBuilder) do |f|
+      .form-group.row
+        = f.label User.human_attribute_name(:email), class: 'col-sm-4 col-form-label'
+        .col-sm-8
+          = f.email_field :email
+
+      .form-group.row
+        = f.label User.human_attribute_name(:password), class: 'col-sm-4 col-form-label'
+        .col-sm-8
+          = f.password_field :password
+
+      .form-group.row
+        .offset-sm-4.col-sm-8
+          .checkbox
+            = f.label :remember_me do
+              = f.check_box :remember_me
+              = User.human_attribute_name(:remember_me)
+
+      .row
+        .col-sm-12
+          button.btn.btn-primary type='submit'
+            i.fas.fa-sign-in-alt.mr-1
+            = t('.sign_in')
+
+.row
+  .col-sm-12
+    p.my-1
+      = link_to t('.forgot_your_password'), new_password_path(resource_name)
+    p.my-1
+      = link_to t('.sign_up'), new_registration_path(resource_name)

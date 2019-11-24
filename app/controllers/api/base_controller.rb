@@ -3,13 +3,8 @@
 module Api
   class BaseController < ApplicationController
     skip_before_action :verify_authenticity_token
-    before_action :doorkeeper_authorize!
 
     private
-
-    def current_resource_owner
-      User.find(doorkeeper_token.resource_owner_id) if doorkeeper_token
-    end
 
     def index_total_count_header(records)
       records.total_count.to_s
@@ -65,6 +60,14 @@ module Api
       errors.messages.keys.each_with_object({}) do |attribute, objects|
         objects[attribute] = errors[attribute].map { |message| errors .full_message(attribute, message) }
       end
+    end
+
+    def page_param
+      params[Kaminari.config.page_method_name] || 1
+    end
+
+    def per_page_param
+      params[:per_page] || Kaminari.config.default_per_page
     end
   end
 end

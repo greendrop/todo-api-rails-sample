@@ -1,0 +1,83 @@
+common: &base
+  url:
+    api:
+      host: <%= ENV['API_URL_HOST'] %>
+      port: <%= ENV['API_URL_PORT'] %>
+      protocol: <%= ENV['API_URL_PROTOCOL'] %>
+      root: <%= ENV['API_URL_ROOT'] %>
+    admin:
+      host: <%= ENV['ADMIN_URL_HOST'] %>
+      port: <%= ENV['ADMIN_URL_PORT'] %>
+      protocol: <%= ENV['ADMIN_URL_PROTOCOL'] %>
+      root: <%= ENV['ADMIN_URL_ROOT'] %>
+  email:
+    from: from@localhost
+  redis:
+    default: &redis_default
+      url: <%= ENV['DEFAULT_REDIS_URL'] %>
+      driver: hiredis
+      namespace: todo-pwa-sample_default
+    cache_store: &redis_cache_store
+      url: <%= ENV['CACHE_STORE_REDIS_URL'] %>
+      driver: hiredis
+      namespace: todo-pwa-sample_cache
+    session_store: &redis_session_store
+      url: <%= ENV['SESSION_STORE_REDIS_URL'] %>
+      driver: hiredis
+      namespace: todo-pwa-sample_session
+    sidekiq: &redis_sidekiq
+      url: <%= ENV['SIDEKIQ_REDIS_URL'] %>
+      driver: hiredis
+      namespace: todo-pwa-sample_sidekiq
+  cache_store:
+    expires_in: <%= 1.day %>
+  session_store:
+    expire_after: <%= 1.day %>
+
+development:
+  <<: *base
+  redis:
+    default:
+      <<: *redis_default
+      namespace: todo-pwa-sample_development_default
+    cache_store:
+      <<: *redis_cache_store
+      namespace: todo-pwa-sample_development_cache
+    session_store:
+      <<: *redis_session_store
+      namespace: todo-pwa-sample_development_session
+    sidekiq:
+      <<: *redis_sidekiq
+      namespace: todo-pwa-sample_development_sidekiq
+
+test:
+  <<: *base
+  redis:
+    default:
+      <<: *redis_default
+      namespace: todo-pwa-sample_test_default
+    cache_store:
+      <<: *redis_cache_store
+      namespace: todo-pwa-sample_test_cache
+    session_store:
+      <<: *redis_session_store
+      namespace: todo-pwa-sample_test_session
+    sidekiq:
+      <<: *redis_sidekiq
+      namespace: todo-pwa-sample_test_sidekiq
+
+production:
+  <<: *base
+  redis:
+    default:
+      <<: *redis_default
+      namespace: todo-pwa-sample_production_default
+    cache_store:
+      <<: *redis_cache_store
+      namespace: todo-pwa-sample_production_cache
+    session_store:
+      <<: *redis_session_store
+      namespace: todo-pwa-sample_production_session
+    sidekiq:
+      <<: *redis_sidekiq
+      namespace: todo-pwa-sample_production_sidekiq

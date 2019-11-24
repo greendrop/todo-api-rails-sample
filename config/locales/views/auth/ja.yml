@@ -1,0 +1,29 @@
+ja:
+  auth:
+    labels:
+      list_model: '%{model}一覧'
+      show_model: '%{model}詳細'
+      new_model: '%{model}作成'
+      edit_model: '%{model}編集'
+      list: 一覧
+      show: 詳細
+      new: 作成
+      create: 登録
+      edit: 編集
+      update: 更新
+      destroy: 削除
+      search: 検索
+      sign_up: ユーザー登録
+      sign_in: ログイン
+      sign_out: ログアウト
+      download: ダウンロード
+      home: ホーム
+      account: アカウント
+      add: 追加
+    messages:
+      destroy_confirm: '本当に削除してもいいですか?'
+      create_success_model:  '%{model}を登録しました。'
+      update_success_model:  '%{model}を更新しました。'
+      destroy_success_model: '%{model}を削除しました。'
+      cancel_success_model: '%{model}をキャンセルしました。'
+      not_found_data: データがありません。

@@ -1,0 +1,74 @@
+version: 2
+
+jobs:
+  build:
+    docker:
+      - image: circleci/ruby:2.5.1-node-browsers
+        environment:
+          TZ: Asia/Tokyo
+          RAILS_ENV: test
+      - image: circleci/mysql:5.7.22
+        environment:
+          TZ: Asia/Tokyo
+          MYSQL_ROOT_PASSWORD: mysql
+          MYSQL_ROOT_HOST: "%"
+      - image: redis:4.0.9
+
+    working_directory: ~/todo-api-rails-sample
+
+    parallelism: 1
+
+    steps:
+      - checkout
+
+      # bundle install
+      - restore_cache:
+          key: todo-api-rails-sample-gem-{{ checksum "Gemfile.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: bundle install
+          command: bundle install --jobs=4 --retry=3 --path vendor/bundle
+      - save_cache:
+          key: todo-api-rails-sample-gem-{{ checksum "Gemfile.lock" }}-{{ .Environment.CACHE_VERSION }}
+          paths:
+            - ./vendor/bundle
+
+      # yarn install
+      - restore_cache:
+          key: todo-api-rails-sample-node-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+      - run:
+          name: yarn install
+          command: yarn install --ignore-engines
+      - save_cache:
+          key: todo-api-rails-sample-node-{{ checksum "yarn.lock" }}-{{ .Environment.CACHE_VERSION }}
+          paths:
+            - ./node_modules
+
+      # setup config
+      - run:
+          name: setup .env
+          command: cp .env.circleci .env
+
+      # wait for mysql
+      - run:
+          name: wait for mysql
+          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
+   
+      # setup database
+      - run:
+          name: setup database
+          command: bundle exec rails db:setup
+
+      # run rspec
+      - run:
+          name: rspec
+          command: bundle exec rails spec
+
+      # run rubocop
+      - run:
+          name: rubocop
+          command: bundle exec rubocop
+
+      # run slim-lint
+      - run:
+          name: slim-lint
+          command: bundle exec slim-lint app/views

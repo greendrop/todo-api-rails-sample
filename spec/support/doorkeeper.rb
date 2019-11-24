@@ -17,4 +17,5 @@ end
 
 RSpec.configure do |config|
   config.include DoorkeeperMethods, type: :controller
+  config.include DoorkeeperMethods, type: :request
 end

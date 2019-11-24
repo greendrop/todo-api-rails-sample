@@ -1,0 +1,10 @@
+- if resource.errors.include?(:base)
+  ruby:
+    messages = resource.errors.get(:base).map do |message|
+      resource.errors.full_message(:base, message)
+    end
+
+  .alert.alert-danger.alert-dismissible.fade.show
+    button.close data-dismiss='alert'
+      | &times;
+    = safe_join(messages, '<br />'.html_safe)

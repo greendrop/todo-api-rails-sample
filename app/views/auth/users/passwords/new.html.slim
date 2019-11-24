@@ -1,0 +1,28 @@
+= content_for :content_header do
+  .row
+    .col-sm-12
+      h1
+        = t('.title')
+
+.row
+  .col-sm-12
+    = form_with(model: resource, scope: resource_name, url: password_path(resource_name), local: true,
+      builder: BootstrapFormBuilder) do |f|
+
+      = render 'auth/shared/form_errors_base', resource: f.object
+
+      .form-group.row
+        = f.label :email, class: 'col-sm-4 col-form-label required'
+        .col-sm-8
+          = f.email_field :email
+
+      .row
+        .col-sm-12
+          button.btn.btn-primary type='submit'
+            i.fas.fa-paper-plane.mr-1
+            = t('.send')
+
+.row
+  .col-sm-12
+    p.my-1
+      = link_to t('auth.labels.sign_in'), new_session_path(resource_name)

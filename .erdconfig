@@ -1,0 +1,10 @@
+attributes:
+  - foreign_key
+  - primary_keys
+  - timestamps
+  - inheritance
+  - content
+filename: docs/db/erd
+filetype: pdf
+sort: false
+exclude: ActiveRecord::SchemaMigration,ActiveRecord::InternalMetadata

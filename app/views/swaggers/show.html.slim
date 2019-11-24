@@ -1,0 +1,28 @@
+= content_for :head do
+  = javascript_include_tag 'https://unpkg.com/swagger-ui-dist@3/swagger-ui-standalone-preset.js'
+  = javascript_include_tag 'https://unpkg.com/swagger-ui-dist@3/swagger-ui-bundle.js'
+  = stylesheet_link_tag 'https://unpkg.com/reset-css@4/reset.css'
+  = stylesheet_link_tag 'https://unpkg.com/swagger-ui-dist@3/swagger-ui.css'
+
+  javascript:
+    document.addEventListener('DOMContentLoaded', () => {
+      const ui = SwaggerUIBundle({
+        urls: [
+          { url: '/docs/api/schema.yml', name: 'API' },
+        ],
+        dom_id: '#swagger-ui',
+        deepLinking: true,
+        presets: [
+          SwaggerUIBundle.presets.apis,
+          SwaggerUIStandalonePreset
+        ],
+        plugins: [
+          SwaggerUIBundle.plugins.DownloadUrl
+        ],
+        layout: "StandaloneLayout",
+        validatorUrl: null
+      })
+      window.ui = ui
+    })
+
+#swagger-ui

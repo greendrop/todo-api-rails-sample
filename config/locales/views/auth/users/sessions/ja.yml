@@ -1,0 +1,9 @@
+ja:
+  auth:
+    users:
+      sessions:
+        new:
+          title: ログイン
+          sign_in: ログイン
+          forgot_your_password: パスワードを忘れた場合はこちら
+          sign_up: アカウントを作成

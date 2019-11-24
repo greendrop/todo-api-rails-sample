@@ -40,6 +40,11 @@ Rails.application.configure do
   # config.action_dispatch.x_sendfile_header = 'X-Sendfile' # for Apache
   # config.action_dispatch.x_sendfile_header = 'X-Accel-Redirect' # for NGINX
 
+  # Mount Action Cable outside main process or domain
+  # config.action_cable.mount_path = nil
+  # config.action_cable.url = 'wss://example.com/cable'
+  # config.action_cable.allowed_request_origins = [ 'http://example.com', /http:\/\/example.*/ ]
+
   # Force all access to the app over SSL, use Strict-Transport-Security, and use secure cookies.
   # config.force_ssl = true
 
@@ -52,10 +57,15 @@ Rails.application.configure do
 
   # Use a different cache store in production.
   # config.cache_store = :mem_cache_store
+  cache_store_settings =
+    Settings.redis.cache_store.symbolize_keys.merge(
+      expires_in: Settings.cache_store.expires_in
+    )
+  config.cache_store = :redis_store, cache_store_settings
 
   # Use a real queuing backend for Active Job (and separate queues per environment)
   # config.active_job.queue_adapter     = :resque
-  # config.active_job.queue_name_prefix = "todo-api-rails-sample_#{Rails.env}"
+  # config.active_job.queue_name_prefix = "todo-pwa-sample_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
 

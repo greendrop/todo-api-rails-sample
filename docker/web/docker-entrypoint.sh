@@ -14,6 +14,10 @@ getent passwd $USER_ID > /dev/null
 user_result=$?
 getent group $GROUP_ID > /dev/null
 group_result=$?
+grep docker.host.internal /etc/hosts > /dev/null
+hosts_result=$?
+ping -c 1 docker.for.mac.host.internal > /dev/null
+use_mac_result=$?
 
 set -e
 
@@ -37,10 +41,17 @@ if [ ! -e /home/docker/.spring ]; then
   chown $USER:$GROUP /home/docker/.spring
 fi
 
-# Environments settings
-if [ -n "$ADDITIONAL_PATH" ]; then
-  export PATH=$ADDITIONAL_PATH:$PATH
-  unset ADDITIONAL_PATH
+# Hosts settings
+if [ $hosts_result -ne 0 ]; then
+  if [ $use_mac_result -eq 0 ]; then
+    # for Mac
+    DOCKER_HOST_IP=`ping -c 1 docker.for.mac.host.internal | head -n 2 | tail -n 1 | awk '{print $4}'`
+  else
+    # for Linux
+    DOCKER_HOST_IP=`cat /etc/hosts | awk 'END{print $1}' | sed -r -e 's/[0-9]+$/1/g'`
+  fi
+  echo ${DOCKER_HOST_IP} docker.host.internal >> /etc/hosts
 fi
 
+# Exec
 exec gosu $USER:$GROUP "$@"

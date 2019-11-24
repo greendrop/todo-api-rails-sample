@@ -1,0 +1,9 @@
+ja:
+  auth:
+    users:
+      registrations:
+        new:
+          title: アカウント作成
+          create: アカウントを作成
+        edit:
+          title: アカウント編集

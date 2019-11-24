@@ -1,0 +1,17 @@
+ruby:
+  alert_types = %w[danger info success warning]
+  flash_messages = flash.each_with_object({}) do |(type, message), messages|
+    next if message.blank?
+
+    type = 'success' if type == 'notice'
+    type = 'danger'  if %w[alert error].include?(type)
+    next unless alert_types.include?(type)
+
+    messages[type] = messages[type].blank? ? message : "#{messages[type]}\n#{message}"
+  end
+
+- flash_messages.each do |type, message|
+  div class="alert alert-#{type} alert-dismissible fade show"
+    button.close data-dismiss='alert'
+      | &times;
+    = nl2br(message)

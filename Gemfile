@@ -114,6 +114,3 @@ gem 'rack-cors', '~> 1.0.5', require: 'rack/cors'
 
 # OAuth2 provider
 gem 'doorkeeper', '~> 5.0.2'
-
-# Excel
-gem 'axlsx', '~> 2.0.1'

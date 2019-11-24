@@ -93,7 +93,7 @@ gem 'doorkeeper-i18n', '~> 3.0'
 gem 'rails-i18n', '~> 5.1.1'
 
 # Authentication
-gem 'devise', '~> 4.5.0'
+gem 'devise', '~> 4.7.1'
 
 # ActiveRecord
 gem 'enumerize', '~> 2.2.2'

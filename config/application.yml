@@ -16,19 +16,19 @@ common: &base
     default: &redis_default
       url: <%= ENV['DEFAULT_REDIS_URL'] %>
       driver: hiredis
-      namespace: todo-pwa-sample_default
+      namespace: todo-api-rails-sample_default
     cache_store: &redis_cache_store
       url: <%= ENV['CACHE_STORE_REDIS_URL'] %>
       driver: hiredis
-      namespace: todo-pwa-sample_cache
+      namespace: todo-api-rails-sample_cache
     session_store: &redis_session_store
       url: <%= ENV['SESSION_STORE_REDIS_URL'] %>
       driver: hiredis
-      namespace: todo-pwa-sample_session
+      namespace: todo-api-rails-sample_session
     sidekiq: &redis_sidekiq
       url: <%= ENV['SIDEKIQ_REDIS_URL'] %>
       driver: hiredis
-      namespace: todo-pwa-sample_sidekiq
+      namespace: todo-api-rails-sample_sidekiq
   cache_store:
     expires_in: <%= 1.day %>
   session_store:
@@ -39,45 +39,45 @@ development:
   redis:
     default:
       <<: *redis_default
-      namespace: todo-pwa-sample_development_default
+      namespace: todo-api-rails-sample_development_default
     cache_store:
       <<: *redis_cache_store
-      namespace: todo-pwa-sample_development_cache
+      namespace: todo-api-rails-sample_development_cache
     session_store:
       <<: *redis_session_store
-      namespace: todo-pwa-sample_development_session
+      namespace: todo-api-rails-sample_development_session
     sidekiq:
       <<: *redis_sidekiq
-      namespace: todo-pwa-sample_development_sidekiq
+      namespace: todo-api-rails-sample_development_sidekiq
 
 test:
   <<: *base
   redis:
     default:
       <<: *redis_default
-      namespace: todo-pwa-sample_test_default
+      namespace: todo-api-rails-sample_test_default
     cache_store:
       <<: *redis_cache_store
-      namespace: todo-pwa-sample_test_cache
+      namespace: todo-api-rails-sample_test_cache
     session_store:
       <<: *redis_session_store
-      namespace: todo-pwa-sample_test_session
+      namespace: todo-api-rails-sample_test_session
     sidekiq:
       <<: *redis_sidekiq
-      namespace: todo-pwa-sample_test_sidekiq
+      namespace: todo-api-rails-sample_test_sidekiq
 
 production:
   <<: *base
   redis:
     default:
       <<: *redis_default
-      namespace: todo-pwa-sample_production_default
+      namespace: todo-api-rails-sample_production_default
     cache_store:
       <<: *redis_cache_store
-      namespace: todo-pwa-sample_production_cache
+      namespace: todo-api-rails-sample_production_cache
     session_store:
       <<: *redis_session_store
-      namespace: todo-pwa-sample_production_session
+      namespace: todo-api-rails-sample_production_session
     sidekiq:
       <<: *redis_sidekiq
-      namespace: todo-pwa-sample_production_sidekiq
+      namespace: todo-api-rails-sample_production_sidekiq

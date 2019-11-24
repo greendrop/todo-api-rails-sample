@@ -3,7 +3,7 @@
 if Rails.env.test?
   Rails.application.config.session_store(
     :cookie_store,
-    key: '_todo-pwa-sample_session'
+    key: '_todo-api-rails-sample_session'
   )
 else
   Rails.application.config.session_store(

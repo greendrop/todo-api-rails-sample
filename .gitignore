@@ -41,3 +41,6 @@ yarn-debug.log*
 
 # direnv
 .envrc
+
+# mac
+.DS_Store

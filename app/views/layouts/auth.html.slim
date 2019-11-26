@@ -6,9 +6,9 @@ html lang='ja'
     meta name='viewport' content='width=device-width, initial-scale=1'
     title
       - if @head_title.present?
-        | #{@head_title} - Todo PWA Sample
+        | #{@head_title} - Todo API Rails Sample
       - else
-        | Todo PWA Sample
+        | Todo API Rails Sample
     = csrf_meta_tags
     = javascript_pack_tag 'auth'
     = stylesheet_pack_tag 'auth'

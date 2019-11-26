@@ -4,8 +4,8 @@ services:
   mysql:
     image: mysql:5.7.22
     environment:
-      - LANG=C.UTF-8
-      - MYSQL_ROOT_PASSWORD=mysql
+      LANG: C.UTF-8
+      MYSQL_ROOT_PASSWORD: mysql
     volumes:
       - mysql_volume:/var/lib/mysql
     ports:
@@ -23,13 +23,13 @@ services:
     ports:
       - '3000:3000'
     environment:
-      - PATH=/app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      - USER_ID=${USER_ID}
-      - GROUP_ID=${GROUP_ID}
-      - MYSQL_ROOT_PASSWORD=mysql
-      - "WEBPACKER_DEV_SERVER_HOST=0.0.0.0"
+      PATH: /app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      USER_ID: ${USER_ID}
+      GROUP_ID: ${GROUP_ID}
+      MYSQL_ROOT_PASSWORD: mysql
+      WEBPACKER_DEV_SERVER_HOST: webpack
     volumes:
-      - .:/app:cached
+      - .:/app:delegated
       - bundle_volume:/usr/local/bundle
       - home_volume:/home/docker
     working_dir: /app
@@ -46,11 +46,11 @@ services:
     command: spring server
     ports: []
     environment:
-      - PATH=/app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      - USER_ID=${USER_ID}
-      - GROUP_ID=${GROUP_ID}
-      - MYSQL_ROOT_PASSWORD=mysql
-      - SPRING_SOCKET=/home/docker/.spring/spring.sock
+      PATH: /app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      USER_ID: ${USER_ID}
+      GROUP_ID: ${GROUP_ID}
+      MYSQL_ROOT_PASSWORD: mysql
+      SPRING_SOCKET: /home/docker/.spring/spring.sock
     hostname: spring
     tty: false
     stdin_open: false
@@ -59,13 +59,12 @@ services:
     command: webpack-dev-server
     ports:
       - '3035:3035'
-    ports: []
     environment:
-      - PATH=/app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
-      - USER_ID=${USER_ID}
-      - GROUP_ID=${GROUP_ID}
-      - MYSQL_ROOT_PASSWORD=mysql
-      - "WEBPACKER_DEV_SERVER_HOST=0.0.0.0"
+      PATH: /app/bin:/app/node_modules/.bin:/usr/local/bundle/bin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+      USER_ID: ${USER_ID}
+      GROUP_ID: ${GROUP_ID}
+      MYSQL_ROOT_PASSWORD: mysql
+      WEBPACKER_DEV_SERVER_HOST: 0.0.0.0
     hostname: webpack
     tty: false
     stdin_open: false

@@ -46,7 +46,8 @@ group :development, :test do
   gem 'json_expressions', '~> 0.9.0', require: false
   gem 'rspec-its', '~> 1.2.0', require: false
   gem 'rspec-rails', '~> 3.8.1'
-  gem 'rubocop', '~> 0.75.1', require: false
+  gem 'rubocop', '~> 0.76.0', require: false
+  gem 'rubocop-performance', '~> 1.5.1', require: false
   gem 'rubocop-rails', '~>2.3.2', require: false
   gem 'scss_lint', '~> 0.57.1', require: false
   gem 'shoulda-callback-matchers', '~> 1.1.4', require: false

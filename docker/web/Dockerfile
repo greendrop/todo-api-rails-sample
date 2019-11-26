@@ -1,5 +1,5 @@
 FROM node:10.16.3-stretch-slim as node
-FROM ruby:2.5.1-slim-stretch
+FROM ruby:2.6.5-slim-stretch
 
 COPY --from=node /opt/ /opt/
 COPY --from=node /usr/local/lib/node_modules /usr/local/lib/node_modules

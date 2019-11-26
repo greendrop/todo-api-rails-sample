@@ -3,7 +3,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/ruby:2.5.1-node-browsers
+      - image: circleci/ruby:2.6.5-node-browsers
         environment:
           TZ: Asia/Tokyo
           RAILS_ENV: test
@@ -48,11 +48,6 @@ jobs:
           name: setup .env
           command: cp .env.circleci .env
 
-      # wait for mysql
-      - run:
-          name: wait for mysql
-          command: dockerize -wait tcp://127.0.0.1:3306 -timeout 1m
-   
       # setup database
       - run:
           name: setup database

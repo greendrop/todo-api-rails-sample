@@ -21,6 +21,16 @@ jobs:
     steps:
       - checkout
 
+      # Update Node.js and npm
+      - run:
+          name: "Update Node.js and npm"
+          command: |
+            curl -sSL "https://nodejs.org/dist/v12.13.0/node-v12.13.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v12.13.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run:
+          name: Check current version of node
+          command: node -v
+
       # bundle install
       - restore_cache:
           key: todo-api-rails-sample-gem-{{ checksum "Gemfile.lock" }}-{{ .Environment.CACHE_VERSION }}

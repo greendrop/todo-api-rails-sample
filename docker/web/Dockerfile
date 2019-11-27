@@ -1,4 +1,4 @@
-FROM node:10.16.3-stretch-slim as node
+FROM node:12.13.0-stretch-slim as node
 FROM ruby:2.6.5-slim-stretch
 
 COPY --from=node /opt/ /opt/
@@ -8,8 +8,8 @@ RUN cd /usr/local/bin \
   && ln -s /usr/local/bin/node nodejs \
   && ln -s ../lib/node_modules/npm/bin/npm-cli.js npm \
   && ln -s ../lib/node_modules/npm/bin/npx-cli.js npx \
-  && ln -s /opt/yarn-v1.17.3/bin/yarn yarn \
-  && ln -s /opt/yarn-v1.17.3/bin/yarnpkg yarnpkg
+  && ln -s /opt/yarn-v1.19.1/bin/yarn yarn \
+  && ln -s /opt/yarn-v1.19.1/bin/yarnpkg yarnpkg
 
 RUN set -ex \
   && apt-get update \

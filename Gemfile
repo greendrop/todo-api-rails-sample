@@ -77,7 +77,7 @@ group :development do
   gem 'pry-doc', '~> 0.13.4'
   gem 'pry-rails', '~> 0.3.6'
   gem 'pry-stack_explorer', '~> 0.4.9.2'
-  gem 'annotate', '~> 2.7.5'
+  gem 'annotate', '~> 3.0.3'
   gem 'rails-erd', '~> 1.6.0'
 end
 

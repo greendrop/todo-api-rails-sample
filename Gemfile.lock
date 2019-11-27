@@ -49,9 +49,9 @@ GEM
       tzinfo (~> 1.1)
     addressable (2.6.0)
       public_suffix (>= 2.0.2, < 4.0)
-    annotate (2.7.5)
+    annotate (3.0.3)
       activerecord (>= 3.2, < 7.0)
-      rake (>= 10.4, < 13.0)
+      rake (>= 10.4, < 14.0)
     ansi (1.5.0)
     arel (9.0.0)
     ast (2.4.0)
@@ -387,7 +387,7 @@ PLATFORMS
 
 DEPENDENCIES
   active_model_serializers (~> 0.10.10)
-  annotate (~> 2.7.5)
+  annotate (~> 3.0.3)
   awesome_print (~> 1.8)
   better_errors (~> 2.5)
   binding_of_caller (~> 0.8.0)

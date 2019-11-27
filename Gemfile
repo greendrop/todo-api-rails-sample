@@ -72,7 +72,7 @@ group :development do
   gem 'letter_opener_web', '~> 1.3.1'
   gem 'pry-byebug', '~> 3.6.0'
   gem 'pry-coolline', '~> 0.2.5'
-  gem 'pry-doc', '~> 0.13.4'
+  gem 'pry-doc', '~> 1.0.0'
   gem 'pry-rails', '~> 0.3.6'
   gem 'pry-stack_explorer', '~> 0.4.9.2'
   gem 'annotate', '~> 2.7.5'

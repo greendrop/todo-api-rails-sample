@@ -66,7 +66,12 @@ jobs:
       # run rspec
       - run:
           name: rspec
-          command: bundle exec rails spec
+          command: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out tmp/test_results/rspec.xml \
+                              --format progress \
+                              $(circleci tests glob "spec/**/*_spec.rb" | circleci tests split --split-by=timings)
 
       # run rubocop
       - run:
@@ -77,3 +82,7 @@ jobs:
       - run:
           name: slim-lint
           command: bundle exec slim-lint app/views
+
+      # store_test_results
+      - store_test_results:
+          path: tmp/test_results

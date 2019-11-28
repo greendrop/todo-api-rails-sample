@@ -68,7 +68,7 @@ group :development do
   gem 'awesome_print', '~> 1.8'
   gem 'better_errors', '~> 2.5'
   gem 'binding_of_caller', '~> 0.8.0'
-  gem 'bullet', '~> 5.7.6'
+  gem 'bullet', '~> 6.0.2'
   gem 'letter_opener_web', '~> 1.3.1'
   gem 'pry-byebug', '~> 3.6.0'
   gem 'pry-coolline', '~> 0.2.5'

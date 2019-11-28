@@ -50,7 +50,7 @@ group :development, :test do
   gem 'scss_lint', '~> 0.59.0', require: false
   gem 'shoulda-callback-matchers', '~> 1.1.4', require: false
   gem 'shoulda-matchers', '~> 4.1.2', require: false
-  gem 'simplecov', '~> 0.12.0', require: false
+  gem 'simplecov', '~> 0.17.1', require: false
   gem 'simplecov-console', '~> 0.4.2', require: false
   gem 'slim_lint', '~> 0.18.0', require: false
 end

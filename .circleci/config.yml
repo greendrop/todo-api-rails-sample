@@ -81,12 +81,12 @@ jobs:
       # run slim-lint
       - run:
           name: slim-lint
-          command: bundle exec slim-lint app/views
+          command: bundle exec slim-lint app/views/*
 
       # run scss-lint
       - run:
           name: scss-lint
-          command: bundle exec scss-lint app/* 
+          command: bundle exec scss-lint
 
       # store_test_results
       - store_test_results:

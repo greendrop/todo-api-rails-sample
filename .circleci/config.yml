@@ -76,12 +76,17 @@ jobs:
       # run rubocop
       - run:
           name: rubocop
-          command: bundle exec rubocop
+          command: bundle exec rubocop --parallel
 
       # run slim-lint
       - run:
           name: slim-lint
           command: bundle exec slim-lint app/views
+
+      # run scss-lint
+      - run:
+          name: scss-lint
+          command: bundle exec scss-lint app/* 
 
       # store_test_results
       - store_test_results:

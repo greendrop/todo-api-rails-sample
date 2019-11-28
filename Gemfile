@@ -83,7 +83,7 @@ end
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 # Configuration
-gem 'dotenv-rails', '~> 2.5.0'
+gem 'dotenv-rails', '~> 2.7.5'
 gem 'settingslogic', '~> 2.0.9'
 
 # Locale

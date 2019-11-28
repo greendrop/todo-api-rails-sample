@@ -44,6 +44,7 @@ group :development, :test do
   gem 'json_expressions', '~> 0.9.0', require: false
   gem 'rspec-its', '~> 1.2.0', require: false
   gem 'rspec-rails', '~> 3.8.1'
+  gem 'rspec_junit_formatter', '~> 0.4.1', require: false
   gem 'rubocop', '~> 0.76.0', require: false
   gem 'rubocop-performance', '~> 1.5.1', require: false
   gem 'rubocop-rails', '~>2.4.0', require: false

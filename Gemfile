@@ -47,7 +47,7 @@ group :development, :test do
   gem 'rubocop', '~> 0.76.0', require: false
   gem 'rubocop-performance', '~> 1.5.1', require: false
   gem 'rubocop-rails', '~>2.4.0', require: false
-  gem 'scss_lint', '~> 0.57.1', require: false
+  gem 'scss_lint', '~> 0.59.0', require: false
   gem 'shoulda-callback-matchers', '~> 1.1.4', require: false
   gem 'shoulda-matchers', '~> 4.1.2', require: false
   gem 'simplecov', '~> 0.12.0', require: false

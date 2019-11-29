@@ -31,6 +31,12 @@ gem 'jbuilder', '~> 2.9'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+group :development do
+  gem 'capistrano-rails', '~> 1.4.0', require: false
+  gem 'capistrano-rbenv', '~> 2.1.4', require: false
+  gem 'capistrano-nodenv', '~> 1.1.0', require: false
+  gem 'capistrano-bundler', '~> 1.6.0', require: false
+end
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false

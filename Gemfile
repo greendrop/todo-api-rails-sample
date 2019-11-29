@@ -89,7 +89,7 @@ gem 'settingslogic', '~> 2.0.9'
 
 # Locale
 gem 'devise-i18n', '~> 1.8.2'
-gem 'doorkeeper-i18n', '~> 3.0'
+gem 'doorkeeper-i18n', '~> 5.0'
 gem 'rails-i18n', '~> 5.1.1'
 
 # Authentication

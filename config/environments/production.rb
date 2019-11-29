@@ -81,6 +81,9 @@ Rails.application.configure do
   # Use a different logger for distributed setups.
   # require 'syslog/logger'
   # config.logger = ActiveSupport::TaggedLogging.new(Syslog::Logger.new 'app-name')
+  config.logger = ChronoLogger.new(Rails.root.join("log/#{Rails.env}.log.%Y%m%d").to_s).tap do |logger|
+    logger.formatter = config.log_formatter
+  end
 
   if ENV['RAILS_LOG_TO_STDOUT'].present?
     logger           = ActiveSupport::Logger.new(STDOUT)

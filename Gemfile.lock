@@ -75,6 +75,7 @@ GEM
     case_transform (0.2)
       activesupport
     choice (0.2.0)
+    chrono_logger (1.1.1)
     coderay (1.1.2)
     coffee-rails (5.0.0)
       coffee-script (>= 2.2.0)
@@ -397,6 +398,7 @@ DEPENDENCIES
   brakeman (~> 4.3.1)
   bullet (~> 6.0.2)
   byebug
+  chrono_logger (~> 1.1.1)
   coffee-rails (~> 5.0)
   devise (~> 4.7.1)
   devise-i18n (~> 1.8.2)

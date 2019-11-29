@@ -42,7 +42,7 @@ group :development, :test do
   gem 'brakeman', '~> 4.3.1', require: false
   gem 'factory_bot_rails', '~> 4.11.1'
   gem 'json_expressions', '~> 0.9.0', require: false
-  gem 'rspec-its', '~> 1.2.0', require: false
+  gem 'rspec-its', '~> 1.3.0', require: false
   gem 'rspec-rails', '~> 3.8.1'
   gem 'rspec_junit_formatter', '~> 0.4.1', require: false
   gem 'rubocop', '~> 0.76.0', require: false

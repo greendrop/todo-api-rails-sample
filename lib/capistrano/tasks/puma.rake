@@ -6,21 +6,21 @@ namespace :puma do
   end
 
   desc 'Start puma server'
-  task start: :environment do
+  task :start do
     on roles(:app) do
       puma_execute(:start)
     end
   end
 
   desc 'Stop puma server'
-  task stop: :environment do
+  task :stop do
     on roles(:app) do
       puma_execute(:stop)
     end
   end
 
   desc 'Restart puma server'
-  task restart: :environment do
+  task :restart do
     on roles(:app) do
       if test("[ -f #{fetch(:puma_pid)} ]")
         execute :sudo, :kill, "-s SIGUSR1 `cat #{fetch(:pid_path)}`"

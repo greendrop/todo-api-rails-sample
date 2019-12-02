@@ -46,7 +46,7 @@ group :development, :test do
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
   gem 'brakeman', '~> 4.3.1', require: false
-  gem 'factory_bot_rails', '~> 4.11.1'
+  gem 'factory_bot_rails', '~> 5.1.1'
   gem 'json_expressions', '~> 0.9.0', require: false
   gem 'rspec-its', '~> 1.3.0', require: false
   gem 'rspec-rails', '~> 3.8.1'

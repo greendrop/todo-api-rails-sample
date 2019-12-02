@@ -122,7 +122,7 @@ gem 'redis-namespace', '~> 1.6.0'
 gem 'redis-rails', '~> 5.0.2'
 
 # CORS
-gem 'rack-cors', '~> 1.0.5', require: 'rack/cors'
+gem 'rack-cors', '~> 1.1.0', require: 'rack/cors'
 
 # OAuth2 provider
 gem 'doorkeeper', '~> 5.0.2'

@@ -37,14 +37,24 @@ workers ENV.fetch('WEB_CONCURRENCY') { 2 }
 # Allow puma to be restarted by `rails restart` command.
 plugin :tmp_restart
 
-app_root = File.expand_path('..', __dir__)
-state_path(File.join(app_root, 'log/server.state'))
+APP_ROOT = File.expand_path('..', __dir__)
+pidfile File.join(APP_ROOT, 'log/server.pid')
+state_path File.join(APP_ROOT, 'log/server.state')
+
+on_worker_boot do
+  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
+end
+
+after_worker_boot do
+  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+end
 
 # Puma worker killer
 ram = (ENV['PUMA_WORKER_KILLER_RAM'] || 2048).to_i
 percent_usage = (ENV['PUMA_WORKER_KILLER_PERCENT_USAGE'] || 0.98).to_f
 frequency = (ENV['PUMA_WORKER_KILLER_FREQUENCY'] || 5).to_i
 rolling_restart_freq = (ENV['PUMA_WORKER_KILLER_ROLLING_RESTART_FREQ'] || 2 * 3600).to_i
+
 before_fork do
   PumaWorkerKiller.config do |config|
     config.ram = ram

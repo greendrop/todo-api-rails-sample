@@ -23,7 +23,7 @@ namespace :puma do
   task :restart do
     on roles(:app) do
       if test("[ -f #{fetch(:puma_pid)} ]")
-        execute :sudo, :kill, "-s SIGUSR1 `cat #{fetch(:pid_path)}`"
+        execute :sudo, :kill, "-s SIGUSR1 `cat #{fetch(:puma_pid_path)}`"
       else
         puma_execute(:start)
       end

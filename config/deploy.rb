@@ -60,7 +60,7 @@ set :nodenv_map_bins, %w[node npm yarn yarnpkg]
 set :nodenv_roles, :all
 
 # puma
-set :puma_pid, "#{shared_path}/tmp/pids/server.pid"
+set :puma_pid_path, "#{shared_path}/tmp/pids/server.pid"
 
 namespace :deploy do
   desc 'Restart application'

@@ -51,6 +51,10 @@ Rails/BulkChangeTable:
 Rails/LexicallyScopedActionFilter:
   Enabled: false
 
+Rails/RakeEnvironment:
+  Exclude:
+    - lib/capistrano/tasks/*
+
 Style/AsciiComments:
   Enabled: false
 

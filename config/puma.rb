@@ -42,11 +42,11 @@ pidfile File.join(APP_ROOT, 'log/server.pid')
 state_path File.join(APP_ROOT, 'log/server.state')
 
 on_worker_boot do
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.connection.disconnect!
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.connection.disconnect!
 end
 
 after_worker_boot do
-  defined?(ActiveRecord::Base) and ActiveRecord::Base.establish_connection
+  defined?(ActiveRecord::Base) && ActiveRecord::Base.establish_connection
 end
 
 # Puma worker killer

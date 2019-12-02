@@ -77,7 +77,7 @@ group :development do
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'bullet', '~> 6.0.2'
   gem 'letter_opener_web', '~> 1.3.1'
-  gem 'pry-byebug', '~> 3.6.0'
+  gem 'pry-byebug', '~> 3.7.0'
   gem 'pry-coolline', '~> 0.2.5'
   gem 'pry-doc', '~> 1.0.0'
   gem 'pry-rails', '~> 0.3.6'

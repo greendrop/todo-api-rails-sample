@@ -108,7 +108,7 @@ gem 'rails-i18n', '~> 6.0.0'
 gem 'devise', '~> 4.7.1'
 
 # ActiveRecord
-gem 'enumerize', '~> 2.2.2'
+gem 'enumerize', '~> 2.3.1'
 gem 'kaminari', '~> 1.1.1'
 gem 'ransack', '~> 2.3.0'
 gem 'active_model_serializers', '~> 0.10.10'

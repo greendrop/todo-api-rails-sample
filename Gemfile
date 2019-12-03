@@ -6,7 +6,7 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.4'
+gem 'rails', '~> 6.0.1'
 # Use mysql as the database for Active Record
 gem 'mysql2', '>= 0.4.4', '< 0.6.0'
 # Use Puma as the app server
@@ -102,7 +102,7 @@ gem 'settingslogic', '~> 2.0.9'
 # Locale
 gem 'devise-i18n', '~> 1.8.2'
 gem 'doorkeeper-i18n', '~> 5.2'
-gem 'rails-i18n', '~> 5.1.1'
+gem 'rails-i18n', '~> 6.0.0'
 
 # Authentication
 gem 'devise', '~> 4.7.1'

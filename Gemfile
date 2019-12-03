@@ -45,7 +45,7 @@ group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: %i[mri mingw x64_mingw]
 
-  gem 'brakeman', '~> 4.3.1', require: false
+  gem 'brakeman', '~> 4.7.2', require: false
   gem 'factory_bot_rails', '~> 5.1.1'
   gem 'json_expressions', '~> 0.9.0', require: false
   gem 'rspec-its', '~> 1.3.0', require: false

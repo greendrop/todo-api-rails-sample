@@ -17,6 +17,14 @@ Bundler/OrderedGems:
 Lint/AmbiguousBlockAssociation:
   Enabled: false
 
+Layout/HashAlignment:
+  Exclude:
+    - app/views/**/*
+
+Layout/TrailingEmptyLines:
+  Exclude:
+    - app/views/**/*
+
 Metrics/AbcSize:
   Max: 50
   Exclude:

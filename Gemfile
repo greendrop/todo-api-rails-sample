@@ -100,7 +100,7 @@ gem 'dotenv-rails', '~> 2.7.5'
 gem 'settingslogic', '~> 2.0.9'
 
 # Locale
-gem 'devise-i18n', '~> 1.8.2'
+gem 'devise-i18n', '~> 1.9.0'
 gem 'doorkeeper-i18n', '~> 5.2'
 gem 'rails-i18n', '~> 5.1.1'
 

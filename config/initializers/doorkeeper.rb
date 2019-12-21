@@ -101,6 +101,7 @@ Doorkeeper.configure do
   # (disabled by default)
   #
   # enforce_configured_scopes
+  default_scopes :public
 
   # Provide support for an owner to be assigned to each registered application (disabled by default)
   # Optional parameter confirmation: true (default false) if you want to enforce ownership of

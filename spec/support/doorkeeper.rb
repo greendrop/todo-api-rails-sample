@@ -9,8 +9,9 @@ module DoorkeeperMethods
   end
 
   def create_doorkeeper_access_token(doorkeeper_application, user, opts = {})
+    socpes = opts[:scopes] || [:public]
     attributes = { application_id: doorkeeper_application.id, resource_owner_id: user.id,
-                   scopes: opts && opts[:scopes] }
+                   scopes: socpes }
     Doorkeeper::AccessToken.create(attributes)
   end
 end

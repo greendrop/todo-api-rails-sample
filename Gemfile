@@ -125,4 +125,4 @@ gem 'redis-rails', '~> 5.0.2'
 gem 'rack-cors', '~> 1.1.0', require: 'rack/cors'
 
 # OAuth2 provider
-gem 'doorkeeper', '~> 5.2.2'
+gem 'doorkeeper', '~> 5.3.0'

@@ -5,7 +5,7 @@
     "@fortawesome/fontawesome": "^1.1.8",
     "@fortawesome/fontawesome-free-solid": "^5.0.13",
     "@rails/ujs": "^6.0.1",
-    "@rails/webpacker": "^4.2.2",
+    "@rails/webpacker": "^5.0.0",
     "bootstrap": "^4.4.1",
     "jquery": "^3.4.1",
     "popper.js": "^1.16.0",

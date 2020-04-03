@@ -53,7 +53,7 @@ group :development, :test do
   gem 'rspec_junit_formatter', '~> 0.4.1', require: false
   gem 'rubocop', '~> 0.77.0', require: false
   gem 'rubocop-performance', '~> 1.5.1', require: false
-  gem 'rubocop-rails', '~>2.4.0', require: false
+  gem 'rubocop-rails', '~>2.5.1', require: false
   gem 'scss_lint', '~> 0.59.0', require: false
   gem 'shoulda-callback-matchers', '~> 1.1.4', require: false
   gem 'shoulda-matchers', '~> 4.1.2', require: false

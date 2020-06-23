@@ -51,7 +51,7 @@ group :development, :test do
   gem 'rspec-its', '~> 1.3.0', require: false
   gem 'rspec-rails', '~> 3.9.0'
   gem 'rspec_junit_formatter', '~> 0.4.1', require: false
-  gem 'rubocop', '~> 0.77.0', require: false
+  gem 'rubocop', '~> 0.86.0', require: false
   gem 'rubocop-performance', '~> 1.5.1', require: false
   gem 'rubocop-rails', '~>2.4.0', require: false
   gem 'scss_lint', '~> 0.59.0', require: false

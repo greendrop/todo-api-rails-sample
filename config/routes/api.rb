@@ -16,6 +16,10 @@ module RoutesApi
       # サインインユーザ
       get '/me' => 'users#me'
 
+      namespace :users do
+        resource :registration, only: %i[create update destroy]
+      end
+
       # タスク
       resources :tasks, except: %i[new edit]
     end

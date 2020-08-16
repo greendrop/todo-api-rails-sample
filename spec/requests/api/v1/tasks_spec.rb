@@ -164,7 +164,7 @@ describe Api::V1::UsersController, type: :request do
     end
   end
 
-  describe 'PATCH api_v1_task_url' do
+  describe 'DELETE api_v1_task_url' do
     let(:task) { create(:task, user: user) }
 
     describe '認証あり' do

@@ -62,5 +62,5 @@ before_fork do
     config.percent_usage = percent_usage
     config.rolling_restart_frequency = rolling_restart_freq
   end
-  PumaWorkerKiller.start if %w[development test].exclude?(Rails.env)
+  PumaWorkerKiller.start unless %w[development test].include?(ENV['RAILS_ENV'])
 end

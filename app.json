@@ -1,0 +1,5 @@
+{
+  "name": "todo-api-rails-sample",
+  "image": "heroku/ruby",
+  "addons": ["cleardb:ignite"]
+}

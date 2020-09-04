@@ -58,8 +58,6 @@ Rails.application.configure do
         expires_in: Settings.cache_store.expires_in
       )
     config.cache_store = :redis_store, cache_store_settings
-  else
-    config.cache_store = :mem_cache_store
   end
 
   # Use a real queuing backend for Active Job (and separate queues per environment)

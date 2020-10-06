@@ -16,10 +16,11 @@ module Api
                      .page(page)
                      .per(per_page)
 
-        response.headers['Total-Count'] = index_total_count_header(@tasks)
-        response.headers['Link'] = index_link_header(@tasks)
-
-        render json: @tasks.as_json
+        json = {
+          data: @tasks.as_json,
+          paging: paging_by_kaminari(@tasks)
+        }
+        render json: json
       end
 
       def show

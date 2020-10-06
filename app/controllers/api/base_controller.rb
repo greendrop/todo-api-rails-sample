@@ -6,53 +6,13 @@ module Api
 
     private
 
-    def index_total_count_header(records)
-      records.total_count.to_s
-    end
-
-    def index_link_header(records)
-      index_link_header_fields(records).join(', ')
-    end
-
-    def index_link_header_fields(records)
-      [
-        index_link_header_first_field(records),
-        index_link_header_previous_field(records),
-        index_link_header_next_field(records),
-        index_link_header_last_field(records)
-      ].compact
-    end
-
-    def index_link_header_first_field(_records)
-      url = url_for(request.query_parameters.merge(
-                      only_path: false, Kaminari.config.page_method_name => 1
-                    ))
-      %(<#{url}>; rel="first")
-    end
-
-    def index_link_header_previous_field(records)
-      return if records.first_page?
-
-      url = url_for(request.query_parameters.merge(
-                      only_path: false, Kaminari.config.page_method_name => records.prev_page
-                    ))
-      %(<#{url}>; rel="prev")
-    end
-
-    def index_link_header_next_field(records)
-      return if records.last_page?
-
-      url = url_for(request.query_parameters.merge(
-                      only_path: false, Kaminari.config.page_method_name => records.next_page
-                    ))
-      %(<#{url}>; rel="next")
-    end
-
-    def index_link_header_last_field(records)
-      url = url_for(request.query_parameters.merge(
-                      only_path: false, Kaminari.config.page_method_name => records.total_pages
-                    ))
-      %(<#{url}>; rel="last")
+    def paging_by_kaminari(records)
+      {
+        total_count: records.total_count,
+        limit_value: records.limit_value,
+        total_pages: records.total_pages,
+        current_page: records.current_page
+      }
     end
 
     def validate_errors(records)

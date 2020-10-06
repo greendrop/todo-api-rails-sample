@@ -19,10 +19,16 @@ describe Api::V1::UsersController, type: :request do
       it '正常に取得できること' do
         expect(response.status).to eq(200)
 
-        body = tasks.as_json
+        body = {
+          data: tasks.as_json,
+          paging: {
+            total_count: 3,
+            limit_value: 25,
+            total_pages: 1,
+            current_page: 1
+          }
+        }
         expect(response.body).to match_json_expression body
-        expect(response.headers['Total-Count']).to eq(tasks.size.to_s)
-        expect(response.headers['Link']).not_to be_nil
       end
     end
 

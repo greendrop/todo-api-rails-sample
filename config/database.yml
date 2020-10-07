@@ -50,4 +50,4 @@ test:
 #
 production:
   <<: *default
-  database: todo-api-rails-sample_production
+  database: <%= ENV['DATABASE_NAME'] || 'todo-api-rails-sample_production' %>

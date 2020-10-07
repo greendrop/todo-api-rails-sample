@@ -42,9 +42,14 @@ paths:
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "#/components/schemas/Task"
+                type: object
+                properties:
+                  data:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Task"
+                  paging:
+                    $ref: "#/components/schemas/Paging"
         401:
           $ref: "#/components/responses/401"
         500:
@@ -102,6 +107,9 @@ paths:
           application/x-www-form-urulencoded:
             schema:
               $ref: "#/components/schemas/TaskForm"
+      responses:
+        204:
+          $ref: "#/components/responses/204"
     delete:
       tags:
         - tasks
@@ -112,6 +120,9 @@ paths:
           required: true
           schema:
             type: number
+      responses:
+        204:
+          $ref: "#/components/responses/204"
 
 components:
   responses:
@@ -141,7 +152,24 @@ components:
           authorizationUrl: /auth/oauth/authorize
           tokenUrl: /auth/oauth/token
           refreshUrl: /auth/oauth/token
+          scopes:
+            public:
   schemas:
+    Paging:
+      type: object
+      properties:
+        total_count:
+          type: number
+          nullable: false
+        limit_value:
+          type: number
+          nullable: false
+        total_pages:
+          type: number
+          nullable: false
+        current_page:
+          type: number
+          nullable: false
     User:
       type: object
       properties:

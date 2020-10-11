@@ -19,16 +19,22 @@ describe Api::V1::UsersController, type: :request do
       it '正常に取得できること' do
         expect(response.status).to eq(200)
 
-        body = {
-          data: tasks.as_json,
-          paging: {
-            total_count: 3,
-            limit_value: 25,
-            total_pages: 1,
-            current_page: 1
-          }
-        }
-        expect(response.body).to match_json_expression body
+        body = JSON.parse(response.body)
+
+        data_first = body['data'].first
+        task = tasks.first
+        expect(data_first['id']).to eq(task.id)
+        expect(data_first['title']).to eq(task.title)
+        expect(data_first['description']).to eq(task.description)
+        expect(data_first['done']).to eq(task.done)
+        expect(data_first['created_at']).to eq(task.created_at.strftime('%FT%T.%L%:z'))
+        expect(data_first['updated_at']).to eq(task.updated_at.strftime('%FT%T.%L%:z'))
+
+        paging = body['paging']
+        expect(paging['total_count']).to eq(3)
+        expect(paging['limit_value']).to eq(25)
+        expect(paging['total_pages']).to eq(1)
+        expect(paging['current_page']).to eq(1)
       end
     end
 

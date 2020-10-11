@@ -19,7 +19,7 @@ paths:
         - users
       summary: ログインユーザー情報を取得
       security:
-        - oauth2
+        - oauth2: [public]
       responses:
         200:
           description: OK
@@ -36,6 +36,19 @@ paths:
       tags:
         - tasks
       summary: タスク一覧を取得
+      security:
+        - oauth2: [public]
+      parameters:
+        - in: query
+          name: page
+          required: false
+          schema:
+            type: number
+        - in: query
+          name: per_page
+          required: false
+          schema:
+            type: number
       responses:
         200:
           description: OK
@@ -50,6 +63,9 @@ paths:
                       $ref: "#/components/schemas/Task"
                   paging:
                     $ref: "#/components/schemas/Paging"
+                required:
+                  - data
+                  - paging
         401:
           $ref: "#/components/responses/401"
         500:
@@ -58,11 +74,18 @@ paths:
       tags:
         - tasks
       summary: タスクを登録
+      security:
+        - oauth2: [public]
       requestBody:
         content:
-          application/x-www-form-urulencoded:
+          application/json:
             schema:
-              $ref: "#/components/schemas/TaskForm"
+              type: object
+              properties:
+                task:
+                  $ref: "#/components/schemas/TaskForm"
+              required:
+                - task
       responses:
         201:
           $ref: "#/components/responses/201"
@@ -75,6 +98,8 @@ paths:
       tags:
         - tasks
       summary: タスクを取得
+      security:
+        - oauth2: [public]
       parameters:
         - name: id
           in: path
@@ -96,6 +121,8 @@ paths:
       tags:
         - tasks
       summary: タスクを更新
+      security:
+        - oauth2: [public]
       parameters:
         - name: id
           in: path
@@ -104,9 +131,14 @@ paths:
             type: number
       requestBody:
         content:
-          application/x-www-form-urulencoded:
+          application/json:
             schema:
-              $ref: "#/components/schemas/TaskForm"
+              type: object
+              properties:
+                task:
+                  $ref: "#/components/schemas/TaskForm"
+              required:
+                - task
       responses:
         204:
           $ref: "#/components/responses/204"
@@ -114,6 +146,8 @@ paths:
       tags:
         - tasks
       summary: タスクを削除
+      security:
+        - oauth2: [public]
       parameters:
         - name: id
           in: path
@@ -187,6 +221,11 @@ components:
           type: string
           format: date-time
           nullable: false
+      required:
+        - id
+        - email
+        - created_at
+        - updated_at
     Task:
       type: object
       properties:
@@ -210,6 +249,13 @@ components:
           type: string
           format: date-time
           nullable: false
+      required:
+        - id
+        - title
+        - description
+        - done
+        - created_at
+        - updated_at
     TaskForm:
       type: object
       properties:
@@ -222,3 +268,7 @@ components:
         done:
           type: boolean
           nullable: false
+      required:
+        - title
+        - description
+        - done

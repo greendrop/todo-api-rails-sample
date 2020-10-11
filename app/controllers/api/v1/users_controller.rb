@@ -5,7 +5,8 @@ module Api
     class UsersController < Api::UserBaseController
       # サインインユーザを出力する
       def me
-        render json: current_resource_owner, serializer: Api::UserSerializer
+        serializer = Api::UserSerializer.new(current_resource_owner)
+        render_success serializer.serializable_hash
       end
     end
   end

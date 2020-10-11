@@ -16,38 +16,46 @@ module Api
                      .page(page)
                      .per(per_page)
 
+        data =
+          @tasks.map do |task|
+            serializer = Api::TaskSerializer.new(task)
+            serializer.serializable_hash
+          end
         json = {
-          data: @tasks.as_json,
+          data: data,
           paging: paging_by_kaminari(@tasks)
         }
         render json: json
       end
 
       def show
-        render json: @task, serializer: TaskSerializer
+        serializer = Api::TaskSerializer.new(@task)
+        render_success serializer.serializable_hash
       end
 
       def create
         @task = Task.new(task_params.merge(user_id: current_resource_owner.id))
         if @task.save
-          render json: @task, serializer: Api::TaskSerializer, status: :created
+          serializer = Api::TaskSerializer.new(@task)
+          render_created serializer.serializable_hash
         else
           serializer = Api::TaskSerializer.new(@task, with_errors: true)
-          render json: serializer.serializable_hash, status: :bad_request
+          render_bad_request serializer.serializable_hash
         end
       end
 
       def update
         if @task.update(task_params)
-          head 204
+          render_no_content
         else
-          render json: @task.as_json.merge(errors: validate_errors(@task)), status: :bad_request
+          serializer = Api::TaskSerializer.new(@task, with_errors: true)
+          render_bad_request serializer.serializable_hash
         end
       end
 
       def destroy
         @task.destroy!
-        head 204
+        render_no_content
       end
 
       private

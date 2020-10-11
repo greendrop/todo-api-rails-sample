@@ -2,6 +2,9 @@
 
 module Api
   class BaseController < ApplicationController
+    include ApiResponseRenderable
+    include ApiExceptionRescuable
+
     skip_before_action :verify_authenticity_token
 
     private

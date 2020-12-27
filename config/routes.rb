@@ -21,6 +21,10 @@ Rails.application.routes.draw do
     extend RoutesApi
   end
 
+  # GraphQL
+  mount GraphiQL::Rails::Engine, at: '/graphiql', graphql_path: '/graphql' if Rails.env.development?
+  post '/graphql', to: 'graphql#execute'
+
   get '/home', to: 'homes#index'
   root to: 'homes#index'
 

@@ -83,6 +83,7 @@ group :development do
   gem 'pry-stack_explorer', '~> 0.4.9.2'
   gem 'annotate', '~> 3.0.3'
   gem 'rails-erd', '~> 1.6.0'
+  gem 'graphiql-rails', '~> 1.7.0'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
@@ -128,3 +129,4 @@ gem 'doorkeeper', '~> 5.2.2'
 
 # API
 gem 'problem_details-rails', '~> 0.2.2'
+gem 'graphql', '~> 1.11.6'

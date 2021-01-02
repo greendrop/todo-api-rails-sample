@@ -11,5 +11,8 @@ module Types
     def test_field
       'Hello World!'
     end
+
+    field :tasks, resolver: Resolvers::TasksResolver
+    field :task, resolver: Resolvers::TaskResolver
   end
 end

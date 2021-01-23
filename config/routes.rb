@@ -21,6 +21,9 @@ Rails.application.routes.draw do
     extend RoutesApi
   end
 
+  # GraphQL
+  post 'api/graphql', to: 'api/graphql#execute'
+
   get '/home', to: 'homes#index'
   root to: 'homes#index'
 

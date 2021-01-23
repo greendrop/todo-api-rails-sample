@@ -128,3 +128,5 @@ gem 'doorkeeper', '~> 5.2.2'
 
 # API
 gem 'problem_details-rails', '~> 0.2.2'
+gem 'graphql', '~> 1.11.6'
+gem 'graphql-batch', '~> 0.4.3'

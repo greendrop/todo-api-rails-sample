@@ -58,7 +58,7 @@ group :development, :test do
   gem 'shoulda-matchers', '~> 4.1.2', require: false
   gem 'simplecov', '~> 0.17.1', require: false
   gem 'simplecov-console', '~> 0.6.0', require: false
-  gem 'slim_lint', '~> 0.18.0', require: false
+  gem 'slim_lint', '~> 0.19.0', require: false
 end
 
 group :development do

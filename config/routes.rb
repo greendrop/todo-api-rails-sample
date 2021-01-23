@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   # GraphQL
-  post 'api/v1/graphql', to: 'api/v1/graphql#execute'
+  post 'api/graphql', to: 'api/graphql#execute'
 
   get '/home', to: 'homes#index'
   root to: 'homes#index'

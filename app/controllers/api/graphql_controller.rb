@@ -58,7 +58,7 @@ module Api
       logger.error e.backtrace.join("\n")
 
       render json: { errors: [{ message: e.message, backtrace: e.backtrace }], data: {} },
-              status: :internal_server_error
+             status: :internal_server_error
     end
 
     def current_user

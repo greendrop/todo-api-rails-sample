@@ -2,8 +2,13 @@
 
 Railsを使用したAPIのサンプルです。
 
-## API
+## REST API
+
   - https://petstore.swagger.io/?url=https%3A%2F%2Fraw.githubusercontent.com%2Fgreendrop%2Ftodo-api-rails-sample%2Fmaster%2Fdocs%2Fapi%2Fschema.yml
+
+## GraphQL
+
+  - https://github.com/greendrop/todo-api-rails-sample/blob/master/docs/api/schema.graphql
 
 ## セットアップ
 

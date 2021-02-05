@@ -117,7 +117,7 @@ gem 'slim-rails', '~> 3.2.0'
 
 # Redis
 gem 'hiredis', '~> 0.6.1'
-gem 'redis-namespace', '~> 1.6.0'
+gem 'redis-namespace', '~> 1.8.1'
 gem 'redis-rails', '~> 5.0.2'
 
 # CORS

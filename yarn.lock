@@ -711,10 +711,10 @@
   dependencies:
     "@fortawesome/fontawesome-common-types" "^0.1.7"
 
-"@rails/ujs@^6.0.1":
-  version "6.0.1"
-  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.1.tgz#5eb013bd7f18a1cc7c314602d3b4d68302e20b60"
-  integrity sha512-IwUGMGke2u5W/hkJLOSU5xcQT3Y0gjIdiEsG27kHyLvsPOzdABKeAD8l37j6romhzeCmM56Wv52OGqSueUmyig==
+"@rails/ujs@^6.0.4":
+  version "6.0.4"
+  resolved "https://registry.yarnpkg.com/@rails/ujs/-/ujs-6.0.4.tgz#b155b0e23b766fe8038cb9bc796efb55ea840c15"
+  integrity sha512-pi6BTIAuMAgfh0tz9jHyKwuzT8HKWlZdfI6/pxcR+NWRuTyN9psYmxskP2QnxFehSkSuvQmQuKv3Hyrs13l3xQ==
 
 "@rails/webpacker@^4.2.2":
   version "4.2.2"

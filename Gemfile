@@ -72,7 +72,7 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
 
   gem 'awesome_print', '~> 1.8'
-  gem 'better_errors', '~> 2.5'
+  gem 'better_errors', '~> 2.8'
   gem 'binding_of_caller', '~> 0.8.0'
   gem 'bullet', '~> 6.0.2'
   gem 'letter_opener_web', '~> 1.3.1'
